@@ -110,10 +110,11 @@ def test_model(test_dataloader: data.BucketIterator, model: nn.Module, device: t
 
 def model_predict(model: nn.Module, text: str, device: torch.device, text_field: data.Field) -> tuple[str, Any]:
     model.eval()
-    token_indices = [text_field.vocab.stoi[token] for token in text_field.tokenize(text)]
-    token_tensor = torch.LongTensor(token_indices).to(device).unsqueeze(1)
-    prediction = torch.nn.functional.softmax(model.forward(token_tensor), dim=1)
-    return 'negative' if prediction.argmax().item() == 0 else 'positive', prediction
+    with torch.no_grad():
+        token_indices = [text_field.vocab.stoi[token] for token in text_field.tokenize(text)]
+        token_tensor = torch.LongTensor(token_indices).to(device).unsqueeze(1)
+        prediction = torch.nn.functional.softmax(model.forward(token_tensor), dim=1)
+        return 'negative' if prediction.argmax().item() == 0 else 'positive', prediction
 
 
 def save_model(model: nn.Module, text_field: data.Field, path: str) -> None:
