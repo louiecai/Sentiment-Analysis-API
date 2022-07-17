@@ -24,5 +24,5 @@ def root():
 
 
 @app.get("/eval")
-def eval_text(text: str = '') -> str:
-    return str(model.predict(text, device)) if text != '' else 'Please enter text to evaluate'
+def eval_text(text: str = '') -> dict:
+    return {'sentiment': model.predict(text, device)[0] if text != '' else 'Please enter text to evaluate'}
