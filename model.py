@@ -168,7 +168,7 @@ class RNN(nn.Module):
         :param path: Path to load the model.
         :return: the model.
         """
-        model = torch.load(os.path.join(os.getcwd(), path, 'model.pt'))
+        model = torch.load(os.path.join(os.getcwd(), path))
         return model
 
     @staticmethod
