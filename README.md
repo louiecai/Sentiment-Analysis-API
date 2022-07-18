@@ -4,6 +4,12 @@ By Louie Cai.
 
 ## Environment Setup
 
+Clone this repository:
+```bash
+git clone https://github.com/louie-cai/Sentiment-Analysis-API.git
+cd Sentiment-Analysis-API
+```
+
 Create a new conda environment (Python version: `3.9.12`) and install the necessary packages:
 
 ```bash
