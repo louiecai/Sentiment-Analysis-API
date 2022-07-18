@@ -32,5 +32,4 @@ named after the time it was trained.
 uvicorn sentiment-analysis-api:app --reload
 ```
 
-To choose a model to run, set the `model_path` variable in `sentiment-analysis-api.py` to the local directory
-where `model.pt` is located.
+To choose a model to run, set the `model_path` variable in `sentiment-analysis-api.py` to the path of the model (defaults to `final_model.pt`).
